@@ -1,10 +1,12 @@
-#include <QtCore>
-#include <QtXml>
-#include <iostream>
+#include <list>
 
+#include "recipeinfo.h"
 
+RecipeInfo* chooseInfoType(QDomElement& element);
 
 int main() {
+
+    // Setting up parcer
     QDomDocument xmlParcer;
     QFile file("/home/student/C++/XMLParcerQt/example.xml");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -17,7 +19,51 @@ int main() {
         return -1;
     }
 
-    std::cout << "File was successfully parced!\n";
+    // Setting up factory
+    std::list<InfoTypes*> recipe;
+    RecipeInfo* writer;
+
+    // Factory's working on a parced document
+    QDomNodeList rootChildren = xmlParcer.firstChildElement().childNodes();
+    for (int i = 0; i < rootChildren.size(); i++ ) {
+        QDomElement elem;
+        if (rootChildren.item(i).isElement()) {
+            elem = rootChildren.item(i).toElement();
+            writer = chooseInfoType(elem);
+        }
+        if (writer == nullptr) {
+            std::cout << "Unknown tag. Please, check XML file.\n";
+            return -1;
+        }
+        recipe.push_back(writer->createNewInfo(elem));
+        delete writer;
+    }
+
 
     return 0;
+}
+
+RecipeInfo* chooseInfoType(QDomElement &element) {
+    std::string elementName = element.nodeName().toStdString();
+    if (elementName == "recipename") {
+        return new NameInfo;
+    }
+    /*else if (elementName == "ingredlist") {
+        return new IngrInfo;
+    }
+    else if (elementName == "utensils") {
+        return new UtensilsInfo;
+    }
+    else if (elementName == "directions") {
+        return new DirectionsInfo;
+    }
+    else if (elementName == "variations") {
+        return new VariationsInfo;
+    }
+    else if (elementName == "preptime") {
+        return new PrepTimeInfo;
+    }*/
+    else {
+        return nullptr;
+    }
 }
