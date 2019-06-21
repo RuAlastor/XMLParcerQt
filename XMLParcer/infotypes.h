@@ -15,6 +15,7 @@ public:
     virtual void setText(const std::string& text) = 0;
     virtual void setAdditionalInfo(const AdditionalInfo* info) = 0;
 
+    virtual void showInfo() = 0;
 };
 
 class RecipeName : public InfoTypes {
@@ -29,6 +30,8 @@ public:
     void setNewAttribute(const std::string& key, const std::string& value);
     void setText(const std::string& text);
     void setAdditionalInfo(const AdditionalInfo* info);
+
+    void showInfo();
 };
 
 /*

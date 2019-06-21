@@ -37,6 +37,7 @@ int main() {
         }
         recipe.push_back(writer->createNewInfo(elem));
         delete writer;
+        recipe.front()->showInfo();
     }
 
 
