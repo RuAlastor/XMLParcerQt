@@ -1,15 +1,19 @@
 #ifndef INFOTYPES_H
 #define INFOTYPES_H
 
+#include <map>
+#include <string>
+#include <iostream>
+
 #include "additionalinfo.h"
 
 class InfoTypes {
 
 public:
-    virtual void setName(std::string& name) = 0;
-    virtual void setNewAttribute(std::string& key, std::string& value);
-    virtual void setText(std::string& text);
-    virtual void setAdditionalInfo(AdditionalInfo* info);
+    virtual void setName(const std::string& name) = 0;
+    virtual void setNewAttribute(const std::string& key, const std::string& value) = 0;
+    virtual void setText(const std::string& text) = 0;
+    virtual void setAdditionalInfo(const AdditionalInfo* info) = 0;
 
 };
 
@@ -21,11 +25,13 @@ private:
     std::string _text;
 
 public:
-    void setName(std::string& name);
-    void setNewAttribute(std::string& key, std::string& value);
-    void setText(std::string& text);
+    void setName(const std::string& name);
+    void setNewAttribute(const std::string& key, const std::string& value);
+    void setText(const std::string& text);
+    void setAdditionalInfo(const AdditionalInfo* info);
 };
 
+/*
 class IngrList : public InfoTypes {
 
 private:
@@ -84,5 +90,6 @@ public:
     void setName(std::string& name);
     void setText(std::string& text);
 };
+*/
 
 #endif // INFOTYPES_H
