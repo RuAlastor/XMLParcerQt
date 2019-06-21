@@ -1,3 +1,4 @@
+/* To add a new tag to read go to chooseInfoType function */
 #include <list>
 
 #include "recipeinfo.h"
@@ -44,6 +45,15 @@ int main() {
     return 0;
 }
 
+/* to add new tag to read add new /if/ statement
+ *
+ * else if (elementName == "/new tag/") {
+ *     return new /new dirivative class from "factory class"/
+ * }
+ *
+ * next step is recipeinfo.h
+ * create new derivative class from RecipeInfo
+*/
 RecipeInfo* chooseInfoType(QDomElement &element) {
     std::string elementName = element.nodeName().toStdString();
     if (elementName == "recipename") {
