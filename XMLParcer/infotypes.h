@@ -49,7 +49,7 @@ public:
     void showInfo();
 
 };
-/*
+
 class Utensils : public InfoTypes {
 
 private:
@@ -57,8 +57,13 @@ private:
     AdditionalInfo* _info;
 
 public:
-    void setName(std::string& name);
+    void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
+
+    void setNewAttribute(const std::string& key, const std::string& value);
+    void setText(const std::string& text);
+
+    void showInfo();
 
 };
 
@@ -69,8 +74,13 @@ private:
     AdditionalInfo* _info;
 
 public:
-    void setName(std::string& name);
+    void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
+
+    void setNewAttribute(const std::string& key, const std::string& value);
+    void setText(const std::string& text);
+
+    void showInfo();
 
 };
 
@@ -81,11 +91,15 @@ private:
     AdditionalInfo* _info;
 
 public:
-    void setName(std::string& name);
+    void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
 
-};
+    void setNewAttribute(const std::string& key, const std::string& value);
+    void setText(const std::string& text);
 
+    void showInfo();
+
+};
 class PrepTime : public InfoTypes {
 
 private:
@@ -93,9 +107,14 @@ private:
     std::string _text;
 
 public:
-    void setName(std::string& name);
-    void setText(std::string& text);
+    void setName(const std::string& name);
+    void setText(const std::string& text);
+
+    void setAdditionalInfo(AdditionalInfo* info);
+    void setNewAttribute(const std::string& key, const std::string& value);
+
+    void showInfo();
+
 };
-*/
 
 #endif // INFOTYPES_H

@@ -32,7 +32,7 @@ int main() {
             writer = chooseInfoType(elem);
         }
         if (writer == nullptr) {
-            std::cout << "Unknown tag. Please, check XML file.\n";
+            std::cout << "Unknown tag. Please, add it or review the XML-document.\n";
             return -1;
         }
         recipe.push_back(writer->createNewInfo(elem));
@@ -61,7 +61,7 @@ RecipeInfo* chooseInfoType(QDomElement &element) {
     else if (elementName == "ingredlist") {
         return new IngrInfo;
     }
-    /*else if (elementName == "utensils") {
+    else if (elementName == "utensils") {
         return new UtensilsInfo;
     }
     else if (elementName == "directions") {
@@ -72,7 +72,7 @@ RecipeInfo* chooseInfoType(QDomElement &element) {
     }
     else if (elementName == "preptime") {
         return new PrepTimeInfo;
-    }*/
+    }
     else {
         return nullptr;
     }

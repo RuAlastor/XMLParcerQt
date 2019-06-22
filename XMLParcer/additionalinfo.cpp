@@ -1,13 +1,15 @@
 #include "additionalinfo.h"
 
-void IngrAdditionalInfo::setNewText(const std::string& text) {
+/* Ingr and Uten setters */
+void IngrAndUtensilsAdditionalInfo::setNewText(const std::string& text) {
     _itemNames.push_back(text);
 }
-void IngrAdditionalInfo::setNewMeasures(const std::string& units, const std::string& unitType) {
+void IngrAndUtensilsAdditionalInfo::setNewMeasures(const std::string& units, const std::string& unitType) {
     _units.push_back(units);
     _unitType.push_back(unitType);
 }
-void IngrAdditionalInfo::printInfo() {
+/* Ingt and Uten printer */
+void IngrAndUtensilsAdditionalInfo::printInfo() {
     auto iterNames = _itemNames.begin();
     auto iterUnits = _units.begin();
     auto iterUnitTypes = _unitType.begin();
@@ -24,3 +26,65 @@ void IngrAdditionalInfo::printInfo() {
         iterUnitTypes++;
     }
 }
+
+/* Directions setter */
+void DirectionsAdditionalInfo::setNewText(const std::string& text) {
+    _steps.push_back(text);
+}
+/* Should throw exception */
+void DirectionsAdditionalInfo::setNewMeasures(const std::string& units, const std::string& unitType) {}
+/* Direction printer */
+void DirectionsAdditionalInfo::printInfo() {
+    std::cout << "DIRECTIONS:\n";
+    int i = 0;
+    for (auto iter : _steps) {
+        std::cout << "Step " << ++i << ": " << iter << '\n';
+    }
+}
+
+/* Variations setter */
+void VariationsAdditionalInfo::setNewText(const std::string& text) {
+    _variants.push_back(text);
+}
+/* Should throw exception */
+void VariationsAdditionalInfo::setNewMeasures(const std::string& units, const std::string& unitType) {}
+/* Variation printer */
+void VariationsAdditionalInfo::printInfo() {
+    std::cout << "OTHER VARIANTS:\n";
+    int i = 0;
+    for (auto iter : _variants) {
+        std::cout << ++i << ". " << iter << '\n';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
