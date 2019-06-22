@@ -36,9 +36,10 @@ class DirectionsAdditionalInfo : public AdditionalInfo {
 private:
     std::list<std::string> _steps;
 
+    void setNewMeasures(const std::string& units, const std::string& unitType);
+
 public:
     void setNewText(const std::string& text);
-    void setNewMeasures(const std::string& units, const std::string& unitType);
 
     void printInfo();
 
@@ -49,9 +50,10 @@ class VariationsAdditionalInfo : public AdditionalInfo {
 private:
     std::list<std::string> _variants;
 
+    void setNewMeasures(const std::string& units, const std::string& unitType);
+
 public:
     void setNewText(const std::string& text);
-    void setNewMeasures(const std::string& units, const std::string& unitType);
 
     void printInfo();
 

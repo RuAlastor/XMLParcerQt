@@ -66,7 +66,12 @@ int Parcer::parceLoadedFile() {
             std::cout << "Unknown tag. Please, add it or review the XML-document.\n";
             return -1;
         }
-        recipe.push_back(writer->createNewInfo(elem));
+        InfoTypes* recipeInfo = writer->createNewInfo(elem);
+        if (recipeInfo == nullptr) {
+            std::cout << "Unknown structure. Please, review the XML-document.\n";
+            return -1;
+        }
+        recipe.push_back(recipeInfo);
         delete writer;
     }
     return 0;

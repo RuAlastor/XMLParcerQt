@@ -7,13 +7,19 @@ int main() {
     // Setting up parcer
     Parcer xmlParcer;
     QString filename = "/home/student/C++/XMLParcerQt/example.xml";
-    xmlParcer.loadDocument(filename);
+    if (xmlParcer.loadDocument(filename)) {
+        return -1;
+    }
 
     // Factory's working on a parced document
-    xmlParcer.parceLoadedFile();
+    if (xmlParcer.parceLoadedFile()) {
+        return -1;
+    }
 
     // Show parced document
-    xmlParcer.printRecipe();
+    if (xmlParcer.printRecipe()) {
+        return -1;
+    }
 
     return 0;
 }

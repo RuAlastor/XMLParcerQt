@@ -23,12 +23,12 @@ private:
     std::map<std::string, std::string> _attribute;
     std::string _text;
 
+    void setAdditionalInfo(AdditionalInfo* info);
+
 public:
     void setName(const std::string& name);
     void setNewAttribute(const std::string& key, const std::string& value);
     void setText(const std::string& text);
-
-    void setAdditionalInfo(AdditionalInfo* info);
 
     void showInfo();
 };
@@ -39,12 +39,12 @@ private:
     std::string _name;
     AdditionalInfo* _info;
 
+    void setNewAttribute(const std::string& key, const std::string& value);
+    void setText(const std::string& text);
+
 public:
     void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
-
-    void setNewAttribute(const std::string& key, const std::string& value);
-    void setText(const std::string& text);
 
     void showInfo();
 
@@ -56,12 +56,12 @@ private:
     std::string _name;
     AdditionalInfo* _info;
 
+    void setNewAttribute(const std::string& key, const std::string& value);
+    void setText(const std::string& text);
+
 public:
     void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
-
-    void setNewAttribute(const std::string& key, const std::string& value);
-    void setText(const std::string& text);
 
     void showInfo();
 
@@ -73,12 +73,12 @@ private:
     std::string _name;
     AdditionalInfo* _info;
 
+    void setNewAttribute(const std::string& key, const std::string& value);
+    void setText(const std::string& text);
+
 public:
     void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
-
-    void setNewAttribute(const std::string& key, const std::string& value);
-    void setText(const std::string& text);
 
     void showInfo();
 
@@ -90,12 +90,12 @@ private:
     std::string _name;
     AdditionalInfo* _info;
 
+    void setNewAttribute(const std::string& key, const std::string& value);
+    void setText(const std::string& text);
+
 public:
     void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
-
-    void setNewAttribute(const std::string& key, const std::string& value);
-    void setText(const std::string& text);
 
     void showInfo();
 
@@ -106,12 +106,12 @@ private:
     std::string _name;
     std::string _text;
 
+    void setAdditionalInfo(AdditionalInfo* info);
+    void setNewAttribute(const std::string& key, const std::string& value);
+
 public:
     void setName(const std::string& name);
     void setText(const std::string& text);
-
-    void setAdditionalInfo(AdditionalInfo* info);
-    void setNewAttribute(const std::string& key, const std::string& value);
 
     void showInfo();
 

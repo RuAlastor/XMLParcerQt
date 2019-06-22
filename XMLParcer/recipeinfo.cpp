@@ -4,10 +4,25 @@ InfoTypes* NameInfo::createNewInfo(QDomElement& element) {
     RecipeName* tmp = new RecipeName;
     tmp->setName(element.nodeName().toStdString());
     QString attributeName = "cuisine";
-    tmp->setNewAttribute(attributeName.toStdString(), element.attribute(attributeName).toStdString());
+    QString checker = element.attribute(attributeName);
+    if (checker == "") {
+        delete tmp;
+        return nullptr;
+    }
+    tmp->setNewAttribute(attributeName.toStdString(), checker.toStdString());
     attributeName = "servings";
-    tmp->setNewAttribute(attributeName.toStdString(), element.attribute(attributeName).toStdString());
-    tmp->setText(element.text().toStdString());
+    checker = element.attribute(attributeName);
+    if (checker == "") {
+        delete tmp;
+        return nullptr;
+    }
+    tmp->setNewAttribute(attributeName.toStdString(), checker.toStdString());
+    checker = element.text();
+    if (checker == "") {
+        delete tmp;
+        return nullptr;
+    }
+    tmp->setText(checker.toStdString());
     return tmp;
 }
 
@@ -19,10 +34,23 @@ InfoTypes* IngrInfo::createNewInfo(QDomElement &element) {
     for (int i = 0; i < elementChildren.size(); i++) {
         QDomNodeList childrenOfChildren = elementChildren.at(i).childNodes();
         QDomElement tmpElement = childrenOfChildren.at(0).toElement();
-        info->setNewMeasures(tmpElement.text().toStdString(),
-                             tmpElement.attribute("units").toStdString());
+        QString unitType = tmpElement.text();
+        QString units = tmpElement.attribute("units");
+        if (unitType == "" || units == "") {
+            delete tmp;
+            delete info;
+            return nullptr;
+        }
+        info->setNewMeasures(units.toStdString(),
+                             unitType.toStdString());
         tmpElement = childrenOfChildren.at(1).toElement();
-        info->setNewText(tmpElement.text().toStdString());
+        QString text = tmpElement.text();
+        if (text == "") {
+            delete tmp;
+            delete info;
+            return nullptr;
+        }
+        info->setNewText(text.toStdString());
     }
     tmp->setAdditionalInfo(info);
     return tmp;
@@ -36,10 +64,23 @@ InfoTypes* UtensilsInfo::createNewInfo(QDomElement &element) {
     for (int i = 0; i < elementChildren.size(); i++) {
         QDomNodeList childrenOfChildren = elementChildren.at(i).childNodes();
         QDomElement tmpElement = childrenOfChildren.at(0).toElement();
-        info->setNewMeasures(tmpElement.text().toStdString(),
-                             tmpElement.attribute("units").toStdString());
+        QString unitType = tmpElement.text();
+        QString units = tmpElement.attribute("units");
+        if (unitType == "" || units == "") {
+            delete tmp;
+            delete info;
+            return nullptr;
+        }
+        info->setNewMeasures(units.toStdString(),
+                             unitType.toStdString());
         tmpElement = childrenOfChildren.at(1).toElement();
-        info->setNewText(tmpElement.text().toStdString());
+        QString text = tmpElement.text();
+        if (text == "") {
+            delete tmp;
+            delete info;
+            return nullptr;
+        }
+        info->setNewText(text.toStdString());
     }
     tmp->setAdditionalInfo(info);
     return tmp;
@@ -52,7 +93,13 @@ InfoTypes* DirectionsInfo::createNewInfo(QDomElement &element) {
     QDomNodeList elementChildren = element.childNodes();
     for (int i = 0; i < elementChildren.size(); i++) {
         QDomElement tmpElement = elementChildren.at(i).toElement();
-        info->setNewText(tmpElement.text().toStdString());
+        QString text = tmpElement.text();
+        if (text == "") {
+            delete tmp;
+            delete info;
+            return nullptr;
+        }
+        info->setNewText(text.toStdString());
     }
     tmp->setAdditionalInfo(info);
     return tmp;
@@ -65,7 +112,13 @@ InfoTypes* VariationsInfo::createNewInfo(QDomElement &element) {
     QDomNodeList elementChildren = element.childNodes();
     for (int i = 0; i < elementChildren.size(); i++) {
         QDomElement tmpElement = elementChildren.at(i).toElement();
-        info->setNewText(tmpElement.text().toStdString());
+        QString text = tmpElement.text();
+        if (text == "") {
+            delete tmp;
+            delete info;
+            return nullptr;
+        }
+        info->setNewText(text.toStdString());
     }
     tmp->setAdditionalInfo(info);
     return tmp;
@@ -74,7 +127,12 @@ InfoTypes* VariationsInfo::createNewInfo(QDomElement &element) {
 InfoTypes* PrepTimeInfo::createNewInfo(QDomElement &element) {
     PrepTime* tmp = new PrepTime;
     tmp->setName(element.nodeName().toStdString());
-    tmp->setText(element.text().toStdString());
+    QString checker = element.text();
+    if (checker == "") {
+        delete tmp;
+        return nullptr;
+    }
+    tmp->setText(checker.toStdString());
     return tmp;
 }
 
