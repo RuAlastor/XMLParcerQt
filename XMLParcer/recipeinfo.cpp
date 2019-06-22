@@ -10,3 +10,20 @@ InfoTypes* NameInfo::createNewInfo(QDomElement& element) {
     tmp->setText(element.text().toStdString());
     return tmp;
 }
+
+InfoTypes* IngrInfo::createNewInfo(QDomElement &element) {
+    IngrList* tmp = new IngrList;
+    tmp->setName(element.nodeName().toStdString());
+    AdditionalInfo* info = new IngrAdditionalInfo;
+    QDomNodeList elementChildren = element.childNodes();
+    for (int i = 0; i < elementChildren.size(); i++) {
+        QDomNodeList childrenOfChildren = elementChildren.at(i).childNodes();
+        QDomElement tmpElement = childrenOfChildren.at(0).toElement();
+        info->setNewMeasures(tmpElement.text().toStdString(),
+                             tmpElement.attribute("units").toStdString());
+        tmpElement = childrenOfChildren.at(1).toElement();
+        info->setNewText(tmpElement.text().toStdString());
+    }
+    tmp->setAdditionalInfo(info);
+    return tmp;
+}

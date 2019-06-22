@@ -2,8 +2,6 @@
 #define INFOTYPES_H
 
 #include <map>
-#include <string>
-#include <iostream>
 
 #include "additionalinfo.h"
 
@@ -13,7 +11,7 @@ public:
     virtual void setName(const std::string& name) = 0;
     virtual void setNewAttribute(const std::string& key, const std::string& value) = 0;
     virtual void setText(const std::string& text) = 0;
-    virtual void setAdditionalInfo(const AdditionalInfo* info) = 0;
+    virtual void setAdditionalInfo(AdditionalInfo* info) = 0;
 
     virtual void showInfo() = 0;
 };
@@ -29,12 +27,12 @@ public:
     void setName(const std::string& name);
     void setNewAttribute(const std::string& key, const std::string& value);
     void setText(const std::string& text);
-    void setAdditionalInfo(const AdditionalInfo* info);
+
+    void setAdditionalInfo(AdditionalInfo* info);
 
     void showInfo();
 };
 
-/*
 class IngrList : public InfoTypes {
 
 private:
@@ -42,11 +40,16 @@ private:
     AdditionalInfo* _info;
 
 public:
-    void setName(std::string& name);
+    void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
 
-};
+    void setNewAttribute(const std::string& key, const std::string& value);
+    void setText(const std::string& text);
 
+    void showInfo();
+
+};
+/*
 class Utensils : public InfoTypes {
 
 private:

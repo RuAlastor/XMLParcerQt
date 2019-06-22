@@ -1,5 +1,4 @@
 /* To add a new tag to read go to chooseInfoType function */
-#include <list>
 
 #include "recipeinfo.h"
 
@@ -38,7 +37,7 @@ int main() {
         }
         recipe.push_back(writer->createNewInfo(elem));
         delete writer;
-        recipe.front()->showInfo();
+        recipe.back()->showInfo();
     }
 
 
@@ -59,10 +58,10 @@ RecipeInfo* chooseInfoType(QDomElement &element) {
     if (elementName == "recipename") {
         return new NameInfo;
     }
-    /*else if (elementName == "ingredlist") {
+    else if (elementName == "ingredlist") {
         return new IngrInfo;
     }
-    else if (elementName == "utensils") {
+    /*else if (elementName == "utensils") {
         return new UtensilsInfo;
     }
     else if (elementName == "directions") {
