@@ -2,8 +2,9 @@
 
 RecipeInfo::~RecipeInfo() {}
 
+
 InfoTypes* NameInfo::createNewInfo(QDomElement& element) {
-    RecipeName* tmp = new RecipeName;
+    RecipeName* tmp = new RecipeName; /* If error - deleted here, if not in Parcer destructor */
     tmp->setName(element.nodeName().toStdString());
     QString attributeName = "cuisine";
     QString checker = element.attribute(attributeName);
@@ -28,10 +29,11 @@ InfoTypes* NameInfo::createNewInfo(QDomElement& element) {
     return tmp;
 }
 
+
 InfoTypes* IngrInfo::createNewInfo(QDomElement &element) {
-    IngrList* tmp = new IngrList;
+    IngrList* tmp = new IngrList; /* If error - deleted here, if not in Parcer destructor */
     tmp->setName(element.nodeName().toStdString());
-    AdditionalInfo* info = new IngrAndUtensilsAdditionalInfo;
+    AdditionalInfo* info = new IngrAndUtensilsAdditionalInfo; /* If error - deleted here, if not in IngrList destructor */
     QDomNodeList elementChildren = element.childNodes();
     for (int i = 0; i < elementChildren.size(); i++) {
         QDomNodeList childrenOfChildren = elementChildren.at(i).childNodes();
@@ -57,11 +59,12 @@ InfoTypes* IngrInfo::createNewInfo(QDomElement &element) {
     tmp->setAdditionalInfo(info);
     return tmp;
 }
+
 
 InfoTypes* UtensilsInfo::createNewInfo(QDomElement &element) {
-    Utensils* tmp = new Utensils;
+    Utensils* tmp = new Utensils; /* If error - deleted here, if not in Parcer destructor */
     tmp->setName(element.nodeName().toStdString());
-    AdditionalInfo* info = new IngrAndUtensilsAdditionalInfo;
+    AdditionalInfo* info = new IngrAndUtensilsAdditionalInfo; /* If error - deleted here, if not in Utensils destructor */
     QDomNodeList elementChildren = element.childNodes();
     for (int i = 0; i < elementChildren.size(); i++) {
         QDomNodeList childrenOfChildren = elementChildren.at(i).childNodes();
@@ -88,10 +91,11 @@ InfoTypes* UtensilsInfo::createNewInfo(QDomElement &element) {
     return tmp;
 }
 
+
 InfoTypes* DirectionsInfo::createNewInfo(QDomElement &element) {
-    Directions* tmp = new Directions;
+    Directions* tmp = new Directions; /* If error - deleted here, if not in Parcer destructor */
     tmp->setName(element.nodeName().toStdString());
-    AdditionalInfo* info = new DirectionsAdditionalInfo;
+    AdditionalInfo* info = new DirectionsAdditionalInfo; /* If error - deleted here, if not in Directions destructor */
     QDomNodeList elementChildren = element.childNodes();
     for (int i = 0; i < elementChildren.size(); i++) {
         QDomElement tmpElement = elementChildren.at(i).toElement();
@@ -106,11 +110,12 @@ InfoTypes* DirectionsInfo::createNewInfo(QDomElement &element) {
     tmp->setAdditionalInfo(info);
     return tmp;
 }
+
 
 InfoTypes* VariationsInfo::createNewInfo(QDomElement &element) {
-    Variations* tmp = new Variations;
+    Variations* tmp = new Variations; /* If error - deleted here, if not in Parcer destructor */
     tmp->setName(element.nodeName().toStdString());
-    AdditionalInfo* info = new VariationsAdditionalInfo;
+    AdditionalInfo* info = new VariationsAdditionalInfo; /* If error - deleted here, if not in Variations destructor */
     QDomNodeList elementChildren = element.childNodes();
     for (int i = 0; i < elementChildren.size(); i++) {
         QDomElement tmpElement = elementChildren.at(i).toElement();
@@ -126,8 +131,9 @@ InfoTypes* VariationsInfo::createNewInfo(QDomElement &element) {
     return tmp;
 }
 
+
 InfoTypes* PrepTimeInfo::createNewInfo(QDomElement &element) {
-    PrepTime* tmp = new PrepTime;
+    PrepTime* tmp = new PrepTime; /* If error - deleted here, if not in Parcer destructor */
     tmp->setName(element.nodeName().toStdString());
     QString checker = element.text();
     if (checker == "") {

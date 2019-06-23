@@ -8,6 +8,16 @@
 
 class AdditionalInfo {
 
+    /*
+     * if parced node has /measures/ parameters
+     * then /text/ is considered to be /units/
+     * /measures/ are filled accordingly
+     *
+     * otherwise
+     * /text/ is considered to be /text/
+     * and class doesn't have /measures/ fields
+    */
+
 public:
     virtual void setNewText(const std::string& text) = 0;
     virtual void setNewMeasures(const std::string& units, const std::string& unitType) = 0;
@@ -38,6 +48,7 @@ class DirectionsAdditionalInfo : public AdditionalInfo {
 private:
     std::list<std::string> _steps;
 
+    /* Should throw exceptions */
     void setNewMeasures(const std::string& units, const std::string& unitType);
 
 public:
@@ -52,6 +63,7 @@ class VariationsAdditionalInfo : public AdditionalInfo {
 private:
     std::list<std::string> _variants;
 
+    /* Should throw exceptions */
     void setNewMeasures(const std::string& units, const std::string& unitType);
 
 public:

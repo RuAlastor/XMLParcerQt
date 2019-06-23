@@ -1,4 +1,3 @@
-/* To add a new tag to read go to chooseInfoType function */
 
 #include "parcer.h"
 

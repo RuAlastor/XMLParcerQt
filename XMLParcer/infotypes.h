@@ -5,6 +5,7 @@
 
 #include "additionalinfo.h"
 
+/* Filles the content of the container node */
 class InfoTypes {
 
 public:
@@ -45,6 +46,10 @@ private:
     void setText(const std::string& text);
 
 public:
+
+    IngrList();
+    ~IngrList();
+
     void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
 
@@ -62,6 +67,10 @@ private:
     void setText(const std::string& text);
 
 public:
+
+    Utensils();
+    ~Utensils();
+
     void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
 
@@ -79,6 +88,10 @@ private:
     void setText(const std::string& text);
 
 public:
+
+    Directions();
+    ~Directions();
+
     void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
 
@@ -96,6 +109,10 @@ private:
     void setText(const std::string& text);
 
 public:
+
+    Variations();
+    ~Variations();
+
     void setName(const std::string& name);
     void setAdditionalInfo(AdditionalInfo* info);
 

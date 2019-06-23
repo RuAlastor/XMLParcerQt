@@ -3,6 +3,8 @@
 
 #include "recipeinfo.h"
 
+/* Factory class */
+
 class Parcer {
 
 private:

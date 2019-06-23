@@ -1,16 +1,5 @@
 #include "parcer.h"
 
-
-/* to add new tag to read add new /if/ statement
- *
- * else if (elementName == "/new tag/") {
- *     return new /new dirivative class from RecipeInfo/
- * }
- *
- * next step is recipeinfo.h
- * create new derivative class from RecipeInfo
-*/
-
 Parcer::~Parcer() {
     for (auto iter : recipe) {
         delete iter;
@@ -20,22 +9,22 @@ Parcer::~Parcer() {
 RecipeInfo* Parcer::chooseInfoType(QDomElement &element) {
     std::string elementName = element.nodeName().toStdString();
     if (elementName == "recipename") {
-        return new NameInfo;
+        return new NameInfo; /* deleted at /delete writer/ */
     }
     else if (elementName == "ingredlist") {
-        return new IngrInfo;
+        return new IngrInfo; /* deleted at /delete writer/ */
     }
     else if (elementName == "utensils") {
-        return new UtensilsInfo;
+        return new UtensilsInfo; /* deleted at /delete writer/ */
     }
     else if (elementName == "directions") {
-        return new DirectionsInfo;
+        return new DirectionsInfo; /* deleted at /delete writer/ */
     }
     else if (elementName == "variations") {
-        return new VariationsInfo;
+        return new VariationsInfo; /* deleted at /delete writer/ */
     }
     else if (elementName == "preptime") {
-        return new PrepTimeInfo;
+        return new PrepTimeInfo; /* deleted at /delete writer/ */
     }
     else {
         return nullptr;
@@ -75,6 +64,7 @@ int Parcer::parceLoadedFile() {
         InfoTypes* recipeInfo = writer->createNewInfo(elem);
         if (recipeInfo == nullptr) {
             std::cout << "Unknown structure. Please, review the XML-document.\n";
+            delete writer;
             return -1;
         }
         recipe.push_back(recipeInfo);

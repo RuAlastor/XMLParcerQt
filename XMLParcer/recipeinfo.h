@@ -6,22 +6,7 @@
 
 #include "infotypes.h"
 
-/* create a derivative from "factory class"
- *
- * class ...Info : public RecipeInfo {
- * public:
- *     InfoTypes* createNewInfo(QDomElement& element);
- * };
- *
- * method should:
- * 1. allocate memory for a your infotype
- * 2. fill it with info according to the content of its XML-sibling
- * 3. return pointer to the allocated memory
- *
- * next step is infotype.h
- * create a new derivative class from InfoTypes
-*/
-
+/* Helps factory to choose info type about recipe */
 class RecipeInfo {
 public:
     virtual InfoTypes* createNewInfo(QDomElement& element) = 0;
