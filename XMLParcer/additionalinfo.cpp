@@ -1,5 +1,8 @@
 #include "additionalinfo.h"
 
+/* Virtual destructor */
+AdditionalInfo::~AdditionalInfo() {}
+
 /* Ingr and Uten setters */
 void IngrAndUtensilsAdditionalInfo::setNewText(const std::string& text) {
     _itemNames.push_back(text);

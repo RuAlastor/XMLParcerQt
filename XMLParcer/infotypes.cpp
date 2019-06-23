@@ -1,5 +1,8 @@
 #include "infotypes.h"
 
+/* Virtual destructor */
+InfoTypes::~InfoTypes() {}
+
 /* RecipeName setters */
 void RecipeName::setName(const std::string& name) {
     _name = name;

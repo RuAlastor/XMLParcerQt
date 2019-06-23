@@ -1,5 +1,7 @@
 #include "recipeinfo.h"
 
+RecipeInfo::~RecipeInfo() {}
+
 InfoTypes* NameInfo::createNewInfo(QDomElement& element) {
     RecipeName* tmp = new RecipeName;
     tmp->setName(element.nodeName().toStdString());

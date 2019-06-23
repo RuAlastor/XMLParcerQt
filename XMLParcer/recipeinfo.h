@@ -25,6 +25,8 @@
 class RecipeInfo {
 public:
     virtual InfoTypes* createNewInfo(QDomElement& element) = 0;
+
+    virtual ~RecipeInfo();
 };
 
 class NameInfo : public RecipeInfo {

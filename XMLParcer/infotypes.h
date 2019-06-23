@@ -14,6 +14,8 @@ public:
     virtual void setAdditionalInfo(AdditionalInfo* info) = 0;
 
     virtual void showInfo() = 0;
+
+    virtual ~InfoTypes();
 };
 
 class RecipeName : public InfoTypes {

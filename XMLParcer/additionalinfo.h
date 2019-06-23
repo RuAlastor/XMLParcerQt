@@ -14,6 +14,8 @@ public:
 
     virtual void printInfo() = 0;
 
+    virtual ~AdditionalInfo();
+
 };
 
 class IngrAndUtensilsAdditionalInfo : public AdditionalInfo {

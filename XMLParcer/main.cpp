@@ -6,7 +6,7 @@ int main() {
 
     // Setting up parcer
     Parcer xmlParcer;
-    QString filename = "/home/student/C++/XMLParcerQt/example.xml";
+    QString filename = "/home/student/C++/example.xml";
     if (xmlParcer.loadDocument(filename)) {
         return -1;
     }
