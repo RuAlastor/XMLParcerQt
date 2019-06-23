@@ -61,20 +61,23 @@ int Parser::parseDocument() {
         NewRecipeInfo* writer = findCorrectWriter(root);
         if (writer == nullptr) {
             std::cout << "Unknown tag. Please, add it or review the XML-document.\n";
+            delete root;
+            delete attributeValue;
+            delete rootChilden;
             return 5;
         }
         InfoTypes* newRecipePart = writer->createNewPart(root);
         if (newRecipePart == nullptr) {
             std::cout << "Unknown structure. Please, review the XML-document.\n";
+            delete root;
+            delete attributeValue;
+            delete rootChilden;
             delete writer;
             return 4;
         }
         _recipe->setNewRecipePart(newRecipePart);
         delete writer;
     }
-
-
-
     delete root;
     delete attributeValue;
     delete rootChilden;
@@ -88,8 +91,24 @@ void Parser::printDocument() const noexcept{
 
 
 NewRecipeInfo* Parser::findCorrectWriter(const QDomElement *element) {
+    std::cout << element->nodeName().toStdString() << '\n';
     if (element->nodeName() == "recipename") {
         return new NewNameInfo;
+    }
+    if (element->nodeName() == "ingredlist") {
+        return new NewIngrInfo;
+    }
+    if (element->nodeName() == "utensils") {
+        return new NewUtensilsInfo;
+    }
+    if (element->nodeName() == "directions") {
+        return new NewDirectionsInfo;
+    }
+    if (element->nodeName() == "variations") {
+        return new NewVariationsInfo;
+    }
+    if (element->nodeName() == "preptime") {
+        return new NewPrepTimeInfo;
     }
     else {
         return nullptr;
