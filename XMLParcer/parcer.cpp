@@ -11,6 +11,12 @@
  * create new derivative class from RecipeInfo
 */
 
+Parcer::~Parcer() {
+    for (auto iter : recipe) {
+        delete iter;
+    }
+}
+
 RecipeInfo* Parcer::chooseInfoType(QDomElement &element) {
     std::string elementName = element.nodeName().toStdString();
     if (elementName == "recipename") {
@@ -85,6 +91,7 @@ int Parcer::printRecipe() {
     for (auto iter : recipe) {
         iter->showInfo();
     }
+    return 0;
 }
 
 

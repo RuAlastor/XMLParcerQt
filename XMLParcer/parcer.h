@@ -13,6 +13,9 @@ private:
     RecipeInfo* chooseInfoType(QDomElement& element);
 
 public:
+
+    ~Parcer();
+
     int loadDocument(QString& filename);
     int parceLoadedFile();
     int printRecipe();
