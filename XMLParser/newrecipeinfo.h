@@ -10,10 +10,11 @@ namespace TestTask {
     public:
         NewRecipeInfo() noexcept = default;
         virtual ~NewRecipeInfo() noexcept = default;
-        NewRecipeInfo(const NewRecipeInfo& other) noexcept = default;
-        NewRecipeInfo(NewRecipeInfo&& other) noexcept = default;
-        NewRecipeInfo& operator=(const NewRecipeInfo& other) noexcept = default;
-        NewRecipeInfo& operator=(NewRecipeInfo& other) noexcept = default;
+
+        NewRecipeInfo(const NewRecipeInfo& other) noexcept = delete;
+        NewRecipeInfo(NewRecipeInfo&& other) noexcept = delete;
+        NewRecipeInfo& operator=(const NewRecipeInfo& other) noexcept = delete;
+        NewRecipeInfo& operator=(NewRecipeInfo& other) noexcept = delete;
 
         virtual InfoTypes* createNewPart(const QDomElement* element) noexcept(false) = 0;
 
@@ -24,10 +25,11 @@ namespace TestTask {
     public:
         NewNameInfo() noexcept = default;
         ~NewNameInfo() noexcept = default;
-        NewNameInfo(const NewNameInfo& other) noexcept = default;
-        NewNameInfo(NewNameInfo&& other) noexcept = default;
-        NewNameInfo& operator=(const NewNameInfo& other) noexcept = default;
-        NewNameInfo& operator=(NewNameInfo&& other) noexcept = default;
+
+        NewNameInfo(const NewNameInfo& other) noexcept = delete;
+        NewNameInfo(NewNameInfo&& other) noexcept = delete;
+        NewNameInfo& operator=(const NewNameInfo& other) noexcept = delete;
+        NewNameInfo& operator=(NewNameInfo&& other) noexcept = delete;
 
         InfoTypes* createNewPart(const QDomElement* element) noexcept(false);
 
@@ -38,10 +40,11 @@ namespace TestTask {
     public:
         NewIngrInfo() noexcept = default;
         ~NewIngrInfo() noexcept = default;
-        NewIngrInfo(const NewIngrInfo& other) noexcept = default;
-        NewIngrInfo(NewIngrInfo&& other) noexcept = default;
-        NewIngrInfo& operator=(const NewIngrInfo& other) noexcept = default;
-        NewIngrInfo& operator=(NewIngrInfo&& other) noexcept = default;
+
+        NewIngrInfo(const NewIngrInfo& other) noexcept = delete;
+        NewIngrInfo(NewIngrInfo&& other) noexcept = delete;
+        NewIngrInfo& operator=(const NewIngrInfo& other) noexcept = delete;
+        NewIngrInfo& operator=(NewIngrInfo&& other) noexcept = delete;
 
         InfoTypes* createNewPart(const QDomElement* element) noexcept(false);
 
@@ -52,10 +55,11 @@ namespace TestTask {
     public:
         NewUtensilsInfo() noexcept = default;
         ~NewUtensilsInfo() noexcept = default;
-        NewUtensilsInfo(const NewUtensilsInfo& other) noexcept = default;
-        NewUtensilsInfo(NewUtensilsInfo&& other) noexcept = default;
-        NewUtensilsInfo& operator=(const NewUtensilsInfo& other) noexcept = default;
-        NewUtensilsInfo& operator=(NewUtensilsInfo&& other) noexcept = default;
+
+        NewUtensilsInfo(const NewUtensilsInfo& other) noexcept = delete;
+        NewUtensilsInfo(NewUtensilsInfo&& other) noexcept = delete;
+        NewUtensilsInfo& operator=(const NewUtensilsInfo& other) noexcept = delete;
+        NewUtensilsInfo& operator=(NewUtensilsInfo&& other) noexcept = delete;
 
         InfoTypes* createNewPart(const QDomElement* element) noexcept(false);
 
@@ -66,10 +70,11 @@ namespace TestTask {
     public:
         NewDirectionsInfo() noexcept = default;
         ~NewDirectionsInfo() noexcept = default;
-        NewDirectionsInfo(const NewDirectionsInfo& other) noexcept = default;
-        NewDirectionsInfo(NewDirectionsInfo&& other) noexcept = default;
-        NewDirectionsInfo& operator=(const NewDirectionsInfo& other) noexcept = default;
-        NewDirectionsInfo& operator=(NewDirectionsInfo&& other) noexcept = default;
+
+        NewDirectionsInfo(const NewDirectionsInfo& other) noexcept = delete;
+        NewDirectionsInfo(NewDirectionsInfo&& other) noexcept = delete;
+        NewDirectionsInfo& operator=(const NewDirectionsInfo& other) noexcept = delete;
+        NewDirectionsInfo& operator=(NewDirectionsInfo&& other) noexcept = delete;
 
         InfoTypes* createNewPart(const QDomElement* element) noexcept(false);
 
@@ -80,10 +85,11 @@ namespace TestTask {
     public:
         NewVariationsInfo() noexcept = default;
         ~NewVariationsInfo() noexcept = default;
-        NewVariationsInfo(const NewVariationsInfo& other) noexcept = default;
-        NewVariationsInfo(NewVariationsInfo&& other) noexcept = default;
-        NewVariationsInfo& operator=(const NewVariationsInfo& other) noexcept = default;
-        NewVariationsInfo& operator=(NewVariationsInfo&& other) noexcept = default;
+
+        NewVariationsInfo(const NewVariationsInfo& other) noexcept = delete;
+        NewVariationsInfo(NewVariationsInfo&& other) noexcept = delete;
+        NewVariationsInfo& operator=(const NewVariationsInfo& other) noexcept = delete;
+        NewVariationsInfo& operator=(NewVariationsInfo&& other) noexcept = delete;
 
         InfoTypes* createNewPart(const QDomElement* element) noexcept(false);
 
@@ -94,10 +100,11 @@ namespace TestTask {
     public:
         NewPrepTimeInfo() noexcept = default;
         ~NewPrepTimeInfo() noexcept = default;
-        NewPrepTimeInfo(const NewPrepTimeInfo& other) noexcept = default;
-        NewPrepTimeInfo(NewPrepTimeInfo&& other) noexcept = default;
-        NewPrepTimeInfo& operator=(const NewPrepTimeInfo& other) noexcept = default;
-        NewPrepTimeInfo& operator=(NewPrepTimeInfo&& other) noexcept = default;
+
+        NewPrepTimeInfo(const NewPrepTimeInfo& other) noexcept = delete;
+        NewPrepTimeInfo(NewPrepTimeInfo&& other) noexcept = delete;
+        NewPrepTimeInfo& operator=(const NewPrepTimeInfo& other) noexcept = delete;
+        NewPrepTimeInfo& operator=(NewPrepTimeInfo&& other) noexcept = delete;
 
         InfoTypes* createNewPart(const QDomElement* element) noexcept(false);
 

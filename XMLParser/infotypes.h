@@ -10,12 +10,13 @@ namespace TestTask {
     public:
         InfoTypes() noexcept = default;
         virtual ~InfoTypes() noexcept = default;
-        InfoTypes(const InfoTypes& other) noexcept = default;
-        InfoTypes(InfoTypes&& other) noexcept = default;
-        InfoTypes& operator=(const InfoTypes& other) noexcept = default;
-        InfoTypes& operator=(InfoTypes& other) noexcept = default;
 
-        virtual void showInfo() noexcept = 0;
+        InfoTypes(const InfoTypes& other) noexcept = delete;
+        InfoTypes(InfoTypes&& other) noexcept = delete;
+        InfoTypes& operator=(const InfoTypes& other) noexcept = delete;
+        InfoTypes& operator=(InfoTypes& other) noexcept = delete;
+
+        virtual void showInfo() const = 0;
 
     };
 
@@ -24,20 +25,28 @@ namespace TestTask {
     public:
         RecipeName() noexcept = default;
         ~RecipeName() noexcept = default;
-        RecipeName(const RecipeName& other) noexcept = default;
-        RecipeName(RecipeName&& other) noexcept = default;
-        RecipeName& operator=(const RecipeName& other) noexcept = default;
-        RecipeName& operator=(RecipeName& other) noexcept = default;
 
-        void setName(const std::string& name) noexcept;
-        void setNewAttribute(const std::string& key, const std::string& value) noexcept;
-        void setText(const std::string& text) noexcept;
+        RecipeName(const RecipeName& other) noexcept = delete;
+        RecipeName(RecipeName&& other) noexcept = delete;
+        RecipeName& operator=(const RecipeName& other) noexcept = delete;
+        RecipeName& operator=(RecipeName& other) noexcept = delete;
 
-        void showInfo() noexcept;
+        inline void setName(const std::string& name) noexcept {
+            _name = name;
+        }
+        inline void setNewAttribute(const std::string& key,
+                                    const std::string& value) noexcept {
+            _attribute.insert(std::pair<std::string, std::string>(key, value));
+        }
+        inline void setText(const std::string& text) noexcept {
+            _text = text;
+        }
+
+        void showInfo() const noexcept;
 
     private:
         std::string _name;
-        std::map<std::string, std::string> _attribute;
+        std::unordered_map<std::string, std::string> _attribute;
         std::string _text;
 
     };
@@ -48,17 +57,20 @@ namespace TestTask {
         ~IngrList() noexcept;
 
         IngrList() noexcept = default;
-        IngrList(const IngrList& other) noexcept = default;
-        IngrList(IngrList&& other) noexcept = default;
-        IngrList& operator=(const IngrList& other) noexcept = default;
-        IngrList& operator=(IngrList& other) noexcept = default;
 
-        void setName(const std::string& name) noexcept;
+        IngrList(const IngrList& other) noexcept = delete;
+        IngrList(IngrList&& other) noexcept = delete;
+        IngrList& operator=(const IngrList& other) noexcept = delete;
+        IngrList& operator=(IngrList& other) noexcept = delete;
+
+        inline void setName(const std::string& name) noexcept {
+            _name = name;
+        }
         void setIngredients(const std::string& name,
                             const std::string& units,
                             const std::string& unitType) noexcept(false);
 
-        void showInfo() noexcept;
+        void showInfo() const noexcept;
 
     private:
         std::string _name;
@@ -73,17 +85,20 @@ namespace TestTask {
         ~Utensils() noexcept;
 
         Utensils() noexcept = default;
-        Utensils(const Utensils& other) noexcept = default;
-        Utensils(Utensils&& other) noexcept = default;
-        Utensils& operator=(const Utensils& other) noexcept = default;
-        Utensils& operator=(Utensils& other) noexcept = default;
 
-        void setName(const std::string& name) noexcept;
+        Utensils(const Utensils& other) noexcept = delete;
+        Utensils(Utensils&& other) noexcept = delete;
+        Utensils& operator=(const Utensils& other) noexcept = delete;
+        Utensils& operator=(Utensils& other) noexcept = delete;
+
+        inline void setName(const std::string& name) noexcept {
+            _name = name;
+        }
         void setUtensils(const std::string& name,
-                         const std::string& units,
+                         const std::string& amount,
                          const std::string& unitType) noexcept(false);
 
-        void showInfo() noexcept;
+        void showInfo() const noexcept;
 
     private:
         std::string _name;
@@ -96,15 +111,20 @@ namespace TestTask {
     public:
         Directions() noexcept = default;
         ~Directions() noexcept = default;
-        Directions(const Directions& other) noexcept = default;
-        Directions(Directions&& other) noexcept = default;
-        Directions& operator=(const Directions& other) noexcept = default;
-        Directions& operator=(Directions& other) noexcept = default;
 
-        void setName(const std::string& name) noexcept;
-        void setSteps(const std::string& step) noexcept;
+        Directions(const Directions& other) noexcept = delete;
+        Directions(Directions&& other) noexcept = delete;
+        Directions& operator=(const Directions& other) noexcept = delete;
+        Directions& operator=(Directions& other) noexcept = delete;
 
-        void showInfo() noexcept;
+        inline void setName(const std::string& name) noexcept {
+            _name = name;
+        }
+        inline void setSteps(const std::string& step) noexcept {
+            _steps.push_back(step);
+        }
+
+        void showInfo() const noexcept;
 
     private:
         std::string _name;
@@ -117,15 +137,20 @@ namespace TestTask {
     public:
         Variations() noexcept = default;
         ~Variations() noexcept = default;
-        Variations(const Variations& other) noexcept = default;
-        Variations(Variations&& other) noexcept = default;
-        Variations& operator=(const Variations& other) noexcept = default;
-        Variations& operator=(Variations& other) noexcept = default;
 
-        void setName(const std::string& name) noexcept;
-        void setVariations(const std::string& variation) noexcept;
+        Variations(const Variations& other) noexcept = delete;
+        Variations(Variations&& other) noexcept = delete;
+        Variations& operator=(const Variations& other) noexcept = delete;
+        Variations& operator=(Variations& other) noexcept = delete;
 
-        void showInfo() noexcept;
+        inline void setName(const std::string& name) noexcept {
+            _name = name;
+        }
+        inline void setVariations(const std::string& variation) noexcept {
+            _variations.push_back(variation);
+        }
+
+        void showInfo() const noexcept;
 
     private:
         std::string _name;
@@ -138,15 +163,20 @@ namespace TestTask {
     public:
         PrepTime() noexcept = default;
         ~PrepTime() noexcept = default;
-        PrepTime(const PrepTime& other) noexcept = default;
-        PrepTime(PrepTime&& other) noexcept = default;
-        PrepTime& operator=(const PrepTime& other) noexcept = default;
-        PrepTime& operator=(PrepTime& other) noexcept = default;
 
-        void setName(const std::string& name) noexcept;
-        void setText(const std::string& text) noexcept;
+        PrepTime(const PrepTime& other) noexcept = delete;
+        PrepTime(PrepTime&& other) noexcept = delete;
+        PrepTime& operator=(const PrepTime& other) noexcept = delete;
+        PrepTime& operator=(PrepTime& other) noexcept = delete;
 
-        void showInfo() noexcept;
+        inline void setName(const std::string& name) noexcept {
+            _name = name;
+        }
+        inline void setText(const std::string& text) noexcept {
+            _text = text;
+        }
+
+        void showInfo() const noexcept;
 
     private:
         std::string _name;

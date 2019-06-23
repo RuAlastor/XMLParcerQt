@@ -20,14 +20,16 @@ namespace TestTask {
         int loadDocument() noexcept(false);
         int parseDocument() noexcept(false);
 
-        void printDocument() const noexcept;
+        inline void printDocument() const noexcept {
+            _recipe->showRecipe();
+        }
 
     private:
         QDomDocument* _xmlParser;
         const char* _fileloc;
         Recipe* _recipe;
 
-        NewRecipeInfo* findCorrectWriter(const QDomElement* element);
+        NewRecipeInfo* findCorrectWriter(const QDomElement* element) noexcept(false);
 
     };
 

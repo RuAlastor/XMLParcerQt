@@ -85,29 +85,24 @@ int Parser::parseDocument() {
 }
 
 
-void Parser::printDocument() const noexcept{
-    _recipe->showRecipe();
-}
-
-
 NewRecipeInfo* Parser::findCorrectWriter(const QDomElement *element) {
-    std::cout << element->nodeName().toStdString() << '\n';
-    if (element->nodeName() == "recipename") {
+    std::string elementName = element->nodeName().toStdString();
+    if (elementName == "recipename") {
         return new NewNameInfo;
     }
-    if (element->nodeName() == "ingredlist") {
+    if (elementName == "ingredlist") {
         return new NewIngrInfo;
     }
-    if (element->nodeName() == "utensils") {
+    if (elementName == "utensils") {
         return new NewUtensilsInfo;
     }
-    if (element->nodeName() == "directions") {
+    if (elementName == "directions") {
         return new NewDirectionsInfo;
     }
-    if (element->nodeName() == "variations") {
+    if (elementName == "variations") {
         return new NewVariationsInfo;
     }
-    if (element->nodeName() == "preptime") {
+    if (elementName == "preptime") {
         return new NewPrepTimeInfo;
     }
     else {

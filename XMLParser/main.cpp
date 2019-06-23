@@ -4,8 +4,15 @@
 int main() {
     const char* fileloc = "/home/student/C++/example.xml";
     TestTask::Parser someParser(fileloc);
-    someParser.loadDocument();
-    someParser.parseDocument();
+
+    if (someParser.loadDocument()) {
+        return -1;
+    }
+
+    if (someParser.parseDocument()) {
+        return -2;
+    }
+
     someParser.printDocument();
 
     return 0;
