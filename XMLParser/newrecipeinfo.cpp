@@ -2,31 +2,30 @@
 
 using namespace TestTask;
 
+
 InfoTypes* NewNameInfo::createNewPart(const QDomElement* element) {
     RecipeName* tmp = new RecipeName;
     tmp->setName(element->nodeName().toStdString());
-    QString* attributeName = new QString;
-    *attributeName = "cuisine";
-    QString* checker = new QString;
-    *checker = element->attribute(*attributeName);
-    if (*checker == "") {
+    std::string attributeName = "cuisine";
+    std::string checker = getElementAttribute(element, attributeName);
+    if (checker == "") {
         delete tmp;
         return nullptr;
     }
-    tmp->setNewAttribute(attributeName->toStdString(), checker->toStdString());
-    *attributeName = "servings";
-    *checker = element->attribute(*attributeName);
-    if (*checker == "") {
+    tmp->setNewAttribute(attributeName, checker);
+    attributeName = "servings";
+    checker = getElementAttribute(element, attributeName);
+    if (checker == "") {
         delete tmp;
         return nullptr;
     }
-    tmp->setNewAttribute(attributeName->toStdString(), checker->toStdString());
-    *checker = element->text();
-    if (*checker == "") {
+    tmp->setNewAttribute(attributeName, checker);
+    checker = element->text().toStdString();
+    if (checker == "") {
         delete tmp;
         return nullptr;
     }
-    tmp->setText(checker->toStdString());
+    tmp->setText(checker);
     return tmp;
 }
 
@@ -37,33 +36,21 @@ InfoTypes* NewIngrInfo::createNewPart(const QDomElement* element) {
     *elementChildren = element->childNodes();
     for (int i = 0; i < elementChildren->size(); i++) {
         if (elementChildren->at(i).isElement()) {
-            QDomNodeList* ingredientValues = new QDomNodeList;
-            *ingredientValues = elementChildren->at(i).childNodes();
             QDomElement* ingredientValue = new QDomElement;
-            *ingredientValue = ingredientValues->at(0).toElement();
-            QString* unitType = new QString;
-            QString* units = new QString;
-            QString* ingredientName = new QString;
-            *unitType = ingredientValue->attribute("units");
-            *units = ingredientValue->text();
-            *ingredientValue = ingredientValues->at(1).toElement();
-            delete ingredientValues;
-            *ingredientName = ingredientValue->text();
+            *ingredientValue = elementChildren->at(i).childNodes().at(0).toElement();
+            std::string unitType;
+            std::string attributeName = "units";
+            unitType = getElementAttribute(ingredientValue, attributeName);
+            std::string units = ingredientValue->text().toStdString();
+            *ingredientValue = elementChildren->at(i).childNodes().at(1).toElement();
+            std::string ingredientName = ingredientValue->text().toStdString();
             delete ingredientValue;
-            if (*unitType == "" || *units == "" || *ingredientName == "") {
-                delete unitType;
-                delete units;
-                delete ingredientName;
+            if (unitType == "" || units == "" || ingredientName == "") {
                 delete elementChildren;
                 delete tmp;
                 return nullptr;
             }
-            tmp->setIngredients(ingredientName->toStdString(),
-                                units->toStdString(),
-                                unitType->toStdString());
-            delete unitType;
-            delete units;
-            delete ingredientName;
+            tmp->setIngredients(ingredientName, units, unitType);
         }
     }
     delete elementChildren;
@@ -77,33 +64,21 @@ InfoTypes* NewUtensilsInfo::createNewPart(const QDomElement* element) {
     *elementChildren = element->childNodes();
     for (int i = 0; i < elementChildren->size(); i++) {
         if (elementChildren->at(i).isElement()) {
-            QDomNodeList* utensilValues = new QDomNodeList;
-            *utensilValues = elementChildren->at(i).childNodes();
             QDomElement* utensilValue = new QDomElement;
-            *utensilValue = utensilValues->at(0).toElement();
-            QString* unitType = new QString;
-            QString* amount = new QString;
-            QString* utensilName = new QString;
-            *unitType = utensilValue->attribute("units");
-            *amount = utensilValue->text();
-            *utensilValue = utensilValues->at(1).toElement();
-            delete utensilValues;
-            *utensilName = utensilValue->text();
+            *utensilValue = elementChildren->at(i).childNodes().at(0).toElement();
+            std::string unitType;
+            std::string attributeName = "units";
+            unitType = getElementAttribute(utensilValue, attributeName);
+            std::string amount = utensilValue->text().toStdString();
+            *utensilValue = elementChildren->at(i).childNodes().at(1).toElement();
+            std::string utensilName = utensilValue->text().toStdString();
             delete utensilValue;
-            if (*unitType == "" || *amount == "" || *utensilName == "") {
-                delete unitType;
-                delete amount;
-                delete utensilName;
+            if (unitType == "" || amount == "" || utensilName == "") {
                 delete elementChildren;
                 delete tmp;
                 return nullptr;
             }
-            tmp->setUtensils(utensilName->toStdString(),
-                                amount->toStdString(),
-                                unitType->toStdString());
-            delete unitType;
-            delete amount;
-            delete utensilName;
+            tmp->setUtensils(utensilName, amount, unitType);
         }
     }
     delete elementChildren;
@@ -117,16 +92,13 @@ InfoTypes* NewDirectionsInfo::createNewPart(const QDomElement *element) {
     *elementChildren = element->childNodes();
     for (int i = 0; i < elementChildren->size(); i++) {
         if (elementChildren->at(i).isElement()) {
-            QString* stepText = new QString;
-            *stepText = elementChildren->at(i).toElement().text();
-            if (*stepText == "") {
+            std::string stepText = elementChildren->at(i).toElement().text().toStdString();
+            if (stepText == "") {
                 delete elementChildren;
-                delete stepText;
                 delete tmp;
                 return nullptr;
             }
-            tmp->setSteps(stepText->toStdString());
-            delete stepText;
+            tmp->setSteps(stepText);
         }
     }
     delete elementChildren;
@@ -140,16 +112,13 @@ InfoTypes* NewVariationsInfo::createNewPart(const QDomElement *element) {
     *elementChildren = element->childNodes();
     for (int i = 0; i < elementChildren->size(); i++) {
         if (elementChildren->at(i).isElement()) {
-            QString* variationText = new QString;
-            *variationText = elementChildren->at(i).toElement().text();
-            if (*variationText == "") {
+            std::string variationText = elementChildren->at(i).toElement().text().toStdString();
+            if (variationText == "") {
                 delete elementChildren;
-                delete variationText;
                 delete tmp;
                 return nullptr;
             }
-            tmp->setVariations(variationText->toStdString());
-            delete variationText;
+            tmp->setVariations(variationText);
         }
     }
     delete elementChildren;
@@ -159,14 +128,11 @@ InfoTypes* NewVariationsInfo::createNewPart(const QDomElement *element) {
 InfoTypes* NewPrepTimeInfo::createNewPart(const QDomElement *element) {
     PrepTime* tmp = new PrepTime;
     tmp->setName(element->nodeName().toStdString());
-    QString* prepText = new QString;
-    *prepText = element->text();
-    if (*prepText == "") {
-        delete prepText;
+    std::string prepText = element->text().toStdString();
+    if (prepText == "") {
         delete tmp;
         return nullptr;
     }
-    tmp->setText(prepText->toStdString());
-    delete prepText;
+    tmp->setText(prepText);
     return tmp;
 }

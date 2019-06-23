@@ -18,6 +18,10 @@ namespace TestTask {
 
         virtual InfoTypes* createNewPart(const QDomElement* element) noexcept(false) = 0;
 
+        inline std::string getElementAttribute(const QDomElement* element, const std::string& attributeName) const noexcept {
+            return element->attribute(QString(attributeName.c_str())).toStdString();
+        }
+
     };
 
     class NewNameInfo : public NewRecipeInfo {
