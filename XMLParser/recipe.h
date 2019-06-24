@@ -10,7 +10,7 @@ namespace TestTask {
 
     public:
         Recipe() noexcept(false);
-        ~Recipe() noexcept = default;
+        ~Recipe() noexcept;
 
         Recipe(const Recipe& other) = delete;
         Recipe(Recipe&& other) = delete;

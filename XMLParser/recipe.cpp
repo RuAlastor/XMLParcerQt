@@ -3,6 +3,11 @@
 using namespace TestTask;
 
 Recipe::Recipe() noexcept(false) : _type("") {}
+Recipe::~Recipe() noexcept {
+    for (auto iter : _recipeParts) {
+        delete iter;
+    }
+}
 
 
 void Recipe::setType(const std::string& type) noexcept {
